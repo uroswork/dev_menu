@@ -35,8 +35,8 @@ class DevMenu extends StatefulWidget {
 
 class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
   Map<String, dynamic> _deviceData = <String, dynamic>{};
-
   Map _appData;
+
   static MethodChannel packageInfoPlatform =
       const MethodChannel('devmenu.flutter.io/packageInfo');
 
@@ -70,20 +70,43 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> screens = [
+      {
+        'name': 'Flags',
+        'widget': FlagsList(list: widget.flags),
+      },
+      {
+        'name': 'Application info',
+        'widget': AppInfo(appData: _appData),
+      },
+      {
+        'name': 'Device info',
+        'widget': DeviceInfo(deviceData: _deviceData),
+      },
+    ];
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Developer menu'),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            FlagsList(list: widget.flags),
-            AppInfo(appData: _appData),
-            DeviceInfo(deviceData: _deviceData),
-          ],
-        ),
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        children: screens
+            .map(
+              (item) => ListTile(
+                title: Text(item['name']),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => item['widget'],
+                    ),
+                  );
+                },
+              ),
+            )
+            .toList(),
       ),
     );
   }

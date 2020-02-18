@@ -11,30 +11,38 @@ class AppInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return appData != null
-        ? Column(
-            children: appData.keys.map(
-              (property) {
-                return Row(
-                  children: <Widget>[
-                    Text(
-                      property,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
-                        child: Text(
-                          appData[property].toString(),
-                          overflow: TextOverflow.ellipsis,
+        ? Scaffold(
+            appBar: AppBar(
+              title: Text('Developer menu - Application info'),
+            ),
+            body: Container(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                children: appData.keys.map(
+                  (property) {
+                    return Row(
+                      children: <Widget>[
+                        Text(
+                          property,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ).toList(),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
+                            child: Text(
+                              appData[property].toString(),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ).toList(),
+              ),
+            ),
           )
         : Container();
   }

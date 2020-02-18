@@ -11,12 +11,20 @@ class FlagsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: list.map(
-        (item) {
-          return FlagItem(item: item);
-        },
-      ).toList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Developer menu - Flags'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          children: list.map(
+            (item) {
+              return FlagItem(item: item);
+            },
+          ).toList(),
+        ),
+      ),
     );
   }
 }

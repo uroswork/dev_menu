@@ -23,7 +23,7 @@ class _FlagItemState extends State<FlagItem> with SharedPreferencesHelper {
     super.initState();
   }
 
-  _getPreferences() async {
+  void _getPreferences() async {
     bool pref = await getSharedPreference(widget.item['title']);
 
     setState(() {
@@ -45,8 +45,10 @@ class _FlagItemState extends State<FlagItem> with SharedPreferencesHelper {
                 children: <Widget>[
                   Text(
                     'FLAG: ',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                    ),
                   ),
                   Expanded(
                     child: Text(
