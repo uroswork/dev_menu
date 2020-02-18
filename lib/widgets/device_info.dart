@@ -10,6 +10,12 @@ class DeviceInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> _deviceData = deviceData;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    _deviceData['screen width'] = width.floor().toString();
+    _deviceData['screen height'] = height.floor().toString();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Developer menu - Device info'),
@@ -17,7 +23,7 @@ class DeviceInfo extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(20.0),
         child: Column(
-          children: deviceData.keys.map(
+          children: _deviceData.keys.map(
             (String property) {
               return Row(
                 children: <Widget>[
@@ -31,7 +37,7 @@ class DeviceInfo extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
                       child: Text(
-                        deviceData[property].toString(),
+                        _deviceData[property].toString(),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
