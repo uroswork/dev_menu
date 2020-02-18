@@ -1,3 +1,4 @@
+import 'package:dev_menu/widgets/playground.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_menu/helpers/shared_preferences_helper.dart';
@@ -22,11 +23,13 @@ class DevMenuHelper with SharedPreferencesHelper {
 class DevMenu extends StatefulWidget {
   final List<Map<String, dynamic>> flags;
   final String packageName;
+  final List<Map<String, dynamic>> testWidgets;
 
   const DevMenu({
     Key key,
     this.flags,
     this.packageName,
+    this.testWidgets,
   }) : super(key: key);
 
   @override
@@ -83,6 +86,10 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
         'name': 'Device info',
         'widget': DeviceInfo(deviceData: _deviceData),
       },
+      {
+        'name': 'Test playground',
+        'widget': Playground(widgets: widget.testWidgets),
+      }
     ];
 
     return Scaffold(

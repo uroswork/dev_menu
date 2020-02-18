@@ -13,6 +13,23 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DevMenu(
+        testWidgets: [
+          {
+            'name': 'Text',
+            'widget': Text('I am test widget 1'),
+          },
+          {
+            'name': 'Sized box',
+            'widget': SizedBox(
+              width: 300,
+              height: 400,
+              child: Container(
+                color: Colors.red,
+                child: Text('I am text in sized box'),
+              ),
+            )
+          }
+        ],
         packageName: 'com.example.dev_menu_example',
         flags: [
           {
