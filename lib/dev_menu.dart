@@ -77,14 +77,17 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
       {
         'name': 'Flags',
         'widget': FlagsList(list: widget.flags),
+        'description': 'Description',
       },
       {
         'name': 'Application info',
         'widget': AppInfo(appData: _appData),
+        'description': 'Description',
       },
       {
         'name': 'Device info',
         'widget': DeviceInfo(deviceData: _deviceData),
+        'description': 'Description',
       },
       {
         'name': 'Test playground',
@@ -102,6 +105,9 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
         children: screens
             .map(
               (item) => ListTile(
+                subtitle: item['description'] != null
+                    ? Text(item['description'])
+                    : Container(),
                 title: Text(item['name']),
                 onTap: () {
                   Navigator.push(
