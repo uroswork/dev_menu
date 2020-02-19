@@ -1,7 +1,7 @@
 import 'package:dev_menu/widgets/drop_down.dart';
 import 'package:flutter/material.dart';
 
-class InfoList extends StatefulWidget {
+class InfoList extends StatelessWidget {
   final Map data;
   final String title;
   final List<Map<String, dynamic>> customAppInfo;
@@ -13,14 +13,9 @@ class InfoList extends StatefulWidget {
     this.customAppInfo,
   }) : super(key: key);
   @override
-  _InfoListState createState() => _InfoListState();
-}
-
-class _InfoListState extends State<InfoList> {
-  @override
   Widget build(BuildContext context) {
-    Map _data = widget.data;
-    if (widget.title == 'Device info') {
+    Map _data = data;
+    if (title == 'Device info') {
       double width = MediaQuery.of(context).size.width;
       double height = MediaQuery.of(context).size.height;
       _data['screen width'] = width.floor().toString();
@@ -28,9 +23,9 @@ class _InfoListState extends State<InfoList> {
     }
 
     Widget renderAdditionalAppInfo() {
-      if (widget.customAppInfo != null && widget.customAppInfo.length > 0) {
+      if (customAppInfo != null && customAppInfo.length > 0) {
         return Column(
-          children: widget.customAppInfo.map(
+          children: customAppInfo.map(
             (appInfo) {
               List<String> options = [];
               appInfo['options'].forEach((option) {
@@ -67,7 +62,7 @@ class _InfoListState extends State<InfoList> {
     return _data != null
         ? Scaffold(
             appBar: AppBar(
-              title: Text(widget.title),
+              title: Text(title),
               centerTitle: true,
             ),
             body: Container(
