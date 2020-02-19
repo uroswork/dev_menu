@@ -40,30 +40,27 @@ class _FlagItemState extends State<FlagItem> with SharedPreferencesHelper {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    'FLAG: ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      widget.item['title'],
-                      maxLines: 1,
-                      overflow: TextOverflow.fade,
-                      softWrap: false,
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                  ),
-                ],
+              Text(
+                widget.item['title'],
+                maxLines: 1,
+                overflow: TextOverflow.fade,
+                softWrap: false,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-              widget.item['description'] != null
-                  ? Text(widget.item['description'])
-                  : Container()
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: widget.item['description'] != null
+                    ? Text(
+                        widget.item['description'],
+                        style: TextStyle(
+                          color: Colors.black54,
+                        ),
+                      )
+                    : Container(),
+              ),
             ],
           ),
         ),
