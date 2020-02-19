@@ -13,6 +13,18 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DevMenu(
+        customAppInfo: [
+          {
+            'title': 'Environment',
+            'selected': 'QA',
+            'options': ['QA', 'DEV', 'PROD', 'STAGING']
+          },
+          {
+            'title': 'Some other dropdown question',
+            'selected': 3,
+            'options': [1, 3, 5, 7, 9]
+          }
+        ],
         testWidgets: [
           {
             'name': 'Alert dialog',

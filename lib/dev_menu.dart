@@ -20,15 +20,17 @@ class DevMenuHelper with SharedPreferencesHelper {
 }
 
 class DevMenu extends StatefulWidget {
-  final List<Map<String, dynamic>> flags;
   final String packageName;
+  final List<Map<String, dynamic>> flags;
   final List<Map<String, dynamic>> testWidgets;
+  final List<Map<String, dynamic>> customAppInfo;
 
   const DevMenu({
     Key key,
     this.flags,
     this.packageName,
     this.testWidgets,
+    this.customAppInfo,
   }) : super(key: key);
 
   @override
@@ -83,6 +85,7 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
         'widget': InfoList(
           data: _appData,
           title: 'Application info',
+          customAppInfo: widget.customAppInfo,
         ),
         'description': 'Description',
       },
