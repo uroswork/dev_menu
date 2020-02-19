@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 mixin SharedPreferencesHelper {
   /// Getter
-  Future<bool> getSharedPreference(String title) async {
+  Future<bool> getSharedPreferenceBool(String title) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return prefs.getBool(title) ?? false;
@@ -16,7 +16,7 @@ mixin SharedPreferencesHelper {
   }
 
   /// Setter
-  Future<bool> setSharedPreference(String title, bool value) async {
+  Future<bool> setSharedPreferenceBool(String title, bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return prefs.setBool(title, value);

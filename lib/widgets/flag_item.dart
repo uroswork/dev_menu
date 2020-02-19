@@ -24,7 +24,7 @@ class _FlagItemState extends State<FlagItem> with SharedPreferencesHelper {
   }
 
   void _getPreferences() async {
-    bool pref = await getSharedPreference(widget.item['title']);
+    bool pref = await getSharedPreferenceBool(widget.item['title']);
 
     setState(() {
       value = pref;
@@ -67,7 +67,7 @@ class _FlagItemState extends State<FlagItem> with SharedPreferencesHelper {
         Switch(
           value: value,
           onChanged: (newValue) {
-            setSharedPreference(widget.item['title'], newValue);
+            setSharedPreferenceBool(widget.item['title'], newValue);
             setState(() {
               value = newValue;
             });

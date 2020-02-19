@@ -9,13 +9,23 @@ import 'package:flutter/services.dart';
 
 class DevMenuHelper with SharedPreferencesHelper {
   @override
-  Future<bool> setSharedPreference(String title, bool value) {
-    return super.setSharedPreference(title, value);
+  Future<bool> setSharedPreferenceBool(String title, bool value) {
+    return super.setSharedPreferenceBool(title, value);
   }
 
   @override
-  Future<bool> getSharedPreference(String title) {
-    return super.getSharedPreference(title);
+  Future<bool> getSharedPreferenceBool(String title) {
+    return super.getSharedPreferenceBool(title);
+  }
+
+  @override
+  Future<bool> setSharedPreferenceString(String title, String value) {
+    return super.setSharedPreferenceString(title, value);
+  }
+
+  @override
+  Future<String> getSharedPreferenceString(String title) {
+    return super.getSharedPreferenceString(title);
   }
 }
 
