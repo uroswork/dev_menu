@@ -88,7 +88,8 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
       {
         'name': 'Flags',
         'widget': FlagsList(list: widget.flags),
-        'description': 'Description',
+        'description':
+            'Switches to turn certain features or test options on and off.',
       },
       {
         'name': 'Application info',
@@ -97,7 +98,8 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
           title: 'Application info',
           customAppInfo: widget.customAppInfo,
         ),
-        'description': 'Description',
+        'description':
+            'Find out (and add your own, for example the environment) some useful info about the app like app version, build number.',
       },
       {
         'name': 'Device info',
@@ -105,11 +107,14 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
           data: _deviceData,
           title: 'Device info',
         ),
-        'description': 'Description',
+        'description':
+            'Find out some useful info about the device like manufacturer, OS version, phone dimensions and many more.',
       },
       {
         'name': 'Test playground',
         'widget': Playground(widgets: widget.testWidgets),
+        'description':
+            'Add the WIP components of your app or the ones that are not connected to flow so other members of the team (QAs can test the UI for example) can see it.',
       }
     ];
 
@@ -123,6 +128,7 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
         children: screens
             .map(
               (item) => ListTile(
+                isThreeLine: item['name'] != 'Flags',
                 subtitle: item['description'] != null
                     ? Text(item['description'])
                     : Container(),
