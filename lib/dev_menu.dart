@@ -30,6 +30,80 @@ class DevMenuHelper with SharedPreferencesHelper {
 }
 
 class DevMenu extends StatefulWidget {
+  /// DevMenu plugin
+  ///
+  /// [packageName] is package name (Android: applicationId).
+  /// For example: "com.example.dev_menu_example"
+  /// Note: This is not needed for iOS, since there is no way of using this
+  /// String to get the application data.
+  ///
+  ///
+  /// [flags] is [List] of [Map]s, contaning title, and description.
+  /// They are used to turn certain features/test on and off. Working with
+  /// the help of Shared prefferences.
+  /// Example:
+  /// [
+  ///   {
+  ///     'title': 'Is Environment button enabled?',
+  ///     'description': 'Determine if Environment button should work.',
+  ///   },
+  /// ]
+  ///
+  ///
+  /// [testWidgets] is list of [Widget]s provided for Test playground screen
+  /// of plugin. Usually widgets which are not yet connected
+  /// with the Apps flow, or work in progress stuff.
+  /// Example:
+  /// [
+  ///   {
+  ///     'name': 'Alert dialog',
+  ///     'widget': AlertDialog(
+  ///       title: Text('Title'),
+  ///       content: Text('Content'),
+  ///       actions: <Widget>[
+  ///         FlatButton(
+  ///           onPressed: () {},
+  ///           child: Center(
+  ///             child: Text('Button 1'),
+  ///           ),
+  ///         ),
+  ///         FlatButton(
+  ///           onPressed: () {},
+  ///           child: Center(
+  ///             child: Text('Button 2'),
+  ///           ),
+  ///         )
+  ///       ],
+  ///     ),
+  ///   },
+  ///   {
+  ///     'name': 'Sized box',
+  ///     'widget': SizedBox(
+  ///       width: 300,
+  ///       height: 400,
+  ///       child: Container(
+  ///         color: Colors.red,
+  ///         child: Text('I am text in sized box'),
+  ///       ),
+  ///     )
+  ///   }
+  /// ]
+  ///
+  ///
+  /// [customAppInfo] is list of custom informations regarding the app.
+  /// Contains title, initially selected option, and list of all options.
+  /// Using Shared preferences, selected will be read on the first run,
+  /// afterwards selected is read from the phone memory.
+  /// Example:
+  /// {
+  //     'title': 'Environment',
+  //     'selected': 'QA',
+  //     'options': ['QA', 'DEV', 'PROD', 'STAGING']
+  //   },
+  // ],
+  ///
+  ///
+
   final String packageName;
   final List<Map<String, dynamic>> flags;
   final List<Map<String, dynamic>> testWidgets;
