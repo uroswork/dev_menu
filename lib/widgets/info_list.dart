@@ -11,7 +11,14 @@ class InfoList extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return data != null
+    Map _data = data;
+    if (title == 'Device info') {
+      double width = MediaQuery.of(context).size.width;
+      double height = MediaQuery.of(context).size.height;
+      _data['screen width'] = width.floor().toString();
+      _data['screen height'] = height.floor().toString();
+    }
+    return _data != null
         ? Scaffold(
             appBar: AppBar(
               title: Text(title),
@@ -20,7 +27,7 @@ class InfoList extends StatelessWidget {
             body: Container(
               padding: EdgeInsets.all(20.0),
               child: Column(
-                children: data.keys.map(
+                children: _data.keys.map(
                   (property) {
                     return Row(
                       children: <Widget>[
@@ -34,7 +41,7 @@ class InfoList extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
                             child: Text(
-                              data[property].toString(),
+                              _data[property].toString(),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
