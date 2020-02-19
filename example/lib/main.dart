@@ -15,8 +15,25 @@ class _MyAppState extends State<MyApp> {
       home: DevMenu(
         testWidgets: [
           {
-            'name': 'Text',
-            'widget': Text('I am test widget 1'),
+            'name': 'Alert dialog',
+            'widget': AlertDialog(
+              title: Text('Title'),
+              content: Text('Content'),
+              actions: <Widget>[
+                FlatButton(
+                  onPressed: () {},
+                  child: Center(
+                    child: Text('Button 1'),
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () {},
+                  child: Center(
+                    child: Text('Button 2'),
+                  ),
+                )
+              ],
+            ),
           },
           {
             'name': 'Sized box',
