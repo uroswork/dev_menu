@@ -25,7 +25,6 @@ class _DropDownState extends State<DropDown> with SharedPreferencesHelper {
     _dropdownValue = widget.initialValue;
 
     _getPreferences();
-
     super.initState();
   }
 

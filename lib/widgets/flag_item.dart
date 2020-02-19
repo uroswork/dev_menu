@@ -19,7 +19,6 @@ class _FlagItemState extends State<FlagItem> with SharedPreferencesHelper {
   @override
   void initState() {
     _getPreferences();
-
     super.initState();
   }
 

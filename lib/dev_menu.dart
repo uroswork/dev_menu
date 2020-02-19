@@ -95,12 +95,13 @@ class DevMenu extends StatefulWidget {
   /// Using Shared preferences, selected will be read on the first run,
   /// afterwards selected is read from the phone memory.
   /// Example:
-  /// {
-  //     'title': 'Environment',
-  //     'selected': 'QA',
-  //     'options': ['QA', 'DEV', 'PROD', 'STAGING']
-  //   },
-  // ],
+  /// [
+  ///   {
+  ///     'title': 'Environment',
+  ///     'selected': 'QA',
+  ///     'options': ['QA', 'DEV', 'PROD', 'STAGING']
+  ///   },
+  /// ],
   ///
   ///
 
