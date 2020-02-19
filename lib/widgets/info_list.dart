@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 
-class AppInfo extends StatelessWidget {
-  final Map appData;
+class InfoList extends StatelessWidget {
+  final Map data;
+  final String title;
 
-  const AppInfo({
+  const InfoList({
     Key key,
-    this.appData,
+    this.data,
+    this.title,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return appData != null
+    return data != null
         ? Scaffold(
             appBar: AppBar(
-              title: Text('Developer menu - Application info'),
+              title: Text(title),
             ),
             body: Container(
               padding: EdgeInsets.all(20.0),
               child: Column(
-                children: appData.keys.map(
+                children: data.keys.map(
                   (property) {
                     return Row(
                       children: <Widget>[
@@ -32,7 +33,7 @@ class AppInfo extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.fromLTRB(5.0, 10.0, 0.0, 10.0),
                             child: Text(
-                              appData[property].toString(),
+                              data[property].toString(),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),

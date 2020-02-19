@@ -1,10 +1,9 @@
+import 'package:dev_menu/widgets/info_list.dart';
 import 'package:dev_menu/widgets/playground.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_menu/helpers/shared_preferences_helper.dart';
 import 'package:dev_menu/widgets/flags_list.dart';
-import 'package:dev_menu/widgets/device_info.dart';
-import 'package:dev_menu/widgets/app_info.dart';
 import 'package:dev_menu/helpers/device_info_helper.dart';
 import 'package:flutter/services.dart';
 
@@ -81,12 +80,18 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
       },
       {
         'name': 'Application info',
-        'widget': AppInfo(appData: _appData),
+        'widget': InfoList(
+          data: _appData,
+          title: 'Developer menu - Application info',
+        ),
         'description': 'Description',
       },
       {
         'name': 'Device info',
-        'widget': DeviceInfo(deviceData: _deviceData),
+        'widget': InfoList(
+          data: _deviceData,
+          title: 'Developer menu - Device info',
+        ),
         'description': 'Description',
       },
       {
