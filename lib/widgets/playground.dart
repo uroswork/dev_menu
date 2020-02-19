@@ -11,7 +11,8 @@ class Playground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Developer menu - Test playground'),
+        title: Text('Test playground'),
+        centerTitle: true,
       ),
       body: ListView(
         children: widgets
@@ -24,9 +25,7 @@ class Playground extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => Scaffold(
                         appBar: AppBar(
-                          title: Text(
-                            'Developer menu - ' + widget['name'],
-                          ),
+                          title: Text(widget['name']),
                         ),
                         body: widget['widget'],
                       ),

@@ -82,7 +82,7 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
         'name': 'Application info',
         'widget': InfoList(
           data: _appData,
-          title: 'Developer menu - Application info',
+          title: 'Application info',
         ),
         'description': 'Description',
       },
@@ -90,7 +90,7 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
         'name': 'Device info',
         'widget': InfoList(
           data: _deviceData,
-          title: 'Developer menu - Device info',
+          title: 'Device info',
         ),
         'description': 'Description',
       },

@@ -15,6 +15,7 @@ class InfoList extends StatelessWidget {
         ? Scaffold(
             appBar: AppBar(
               title: Text(title),
+              centerTitle: true,
             ),
             body: Container(
               padding: EdgeInsets.all(20.0),

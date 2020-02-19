@@ -13,7 +13,8 @@ class FlagsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Developer menu - Flags'),
+        title: Text('Flags'),
+        centerTitle: true,
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
