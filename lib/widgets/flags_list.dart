@@ -18,13 +18,15 @@ class FlagsList extends StatelessWidget {
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: list.map(
-            (item) {
-              return FlagItem(item: item);
-            },
-          ).toList(),
-        ),
+        child: list != null && list.length > 0
+            ? Column(
+                children: list.map(
+                  (item) {
+                    return FlagItem(item: item);
+                  },
+                ).toList(),
+              )
+            : Text('You do not have any flags.'),
       ),
     );
   }

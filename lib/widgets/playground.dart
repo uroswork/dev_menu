@@ -14,28 +14,33 @@ class Playground extends StatelessWidget {
         title: Text('Test playground'),
         centerTitle: true,
       ),
-      body: ListView(
-        children: widgets
-            .map(
-              (widget) => ListTile(
-                title: Text(widget['name']),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Scaffold(
-                        appBar: AppBar(
-                          title: Text(widget['name']),
-                        ),
-                        body: widget['widget'],
-                      ),
+      body: widgets != null && widgets.length > 0
+          ? ListView(
+              children: widgets
+                  .map(
+                    (widget) => ListTile(
+                      title: Text(widget['name']),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Scaffold(
+                              appBar: AppBar(
+                                title: Text(widget['name']),
+                              ),
+                              body: widget['widget'],
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
+                  )
+                  .toList(),
             )
-            .toList(),
-      ),
+          : Container(
+              padding: EdgeInsets.all(20.0),
+              child: Text('Please add some Test Widgets.'),
+            ),
     );
   }
 }

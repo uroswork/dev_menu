@@ -138,15 +138,17 @@ class _DevMenuState extends State<DevMenu> with DeviceInfoHelper {
   }
 
   Future<void> _getPackageInfo() async {
-    await packageInfoPlatform.invokeMethod('getPackageInfo', {
-      "packageName": widget.packageName,
-    }).then((result) {
-      setState(() {
-        _appData = result;
+    if (widget.packageName != null) {
+      await packageInfoPlatform.invokeMethod('getPackageInfo', {
+        "packageName": widget.packageName,
+      }).then((result) {
+        setState(() {
+          _appData = result;
+        });
+      }).catchError((e) {
+        print(e);
       });
-    }).catchError((e) {
-      print(e);
-    });
+    }
   }
 
   Future<void> _getDeviceInfo() async {

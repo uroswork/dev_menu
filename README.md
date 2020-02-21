@@ -28,6 +28,18 @@ Example:
 ]
 ```
 
+Using `flags` in your app >
+
+Example:
+
+```
+bool shouldAllowClick = await DevMenuHelper()
+  .getSharedPreferenceBool('Is Environment button enabled?'); -> matches "title" from above.
+return shouldAllowClick ? Button() : Container();     
+
+```
+
+
 `testWidgets` is list of widgets provided for Test playground screen of plugin. Usually widgets which are not yet connected with the Apps flow, or work in progress stuff.
 
 Example:

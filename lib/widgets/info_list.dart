@@ -15,6 +15,7 @@ class InfoList extends StatelessWidget {
   }) : super(key: key);
 
   Widget renderAdditionalAppInfo() {
+    bool isiOS = Platform.isIOS;
     if (customAppInfo != null && customAppInfo.length > 0) {
       return Column(
         children: customAppInfo.map(
@@ -47,12 +48,18 @@ class InfoList extends StatelessWidget {
           },
         ).toList(),
       );
+    } else {
+      if (isiOS) {
+        return Text(
+            'You are running on iOS. Add customAppInfo if you want to see it here.');
+      }
     }
     return Container();
   }
 
   @override
   Widget build(BuildContext context) {
+    bool isiOS = Platform.isIOS;
     Map _data = data;
     bool isDeviceInfo = title == 'Device info';
     if (isDeviceInfo) {
@@ -62,18 +69,17 @@ class InfoList extends StatelessWidget {
       _data['screen height'] = height.floor().toString();
     }
     bool isAppInfo = title == 'Application info';
-    bool isiOS = Platform.isIOS;
     bool shouldHideDefaultAppInfo = isiOS && isAppInfo;
 
-    return _data != null
-        ? Scaffold(
-            appBar: AppBar(
-              title: Text(title),
-              centerTitle: true,
-            ),
-            body: Container(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        centerTitle: true,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: _data != null
+            ? Column(
                 children: [
                   shouldHideDefaultAppInfo
                       ? Container()
@@ -105,9 +111,12 @@ class InfoList extends StatelessWidget {
                         ),
                   renderAdditionalAppInfo()
                 ],
-              ),
-            ),
-          )
-        : Container();
+              )
+            : shouldHideDefaultAppInfo
+                ? Text(
+                    'You are running on iOS. Add customAppInfo if you want to see it here.')
+                : Text('Please provide packageName.'),
+      ),
+    );
   }
 }
