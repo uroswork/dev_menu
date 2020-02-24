@@ -1,7 +1,7 @@
+## 1.0.3
+
+- Fixed text errors
+
 ## 1.0.2
 
 - Updated description
-
-## 0.0.1
-
-- TODO: Describe initial release.
