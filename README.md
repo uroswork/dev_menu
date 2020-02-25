@@ -32,10 +32,27 @@ Example:
 Using `flags` in your app:
 
 ```
-bool shouldAllowClick = await DevMenuHelper()
+bool isButtonEnabled = await DevMenuHelper()
   .getSharedPreferenceBool('Is Environment button enabled?'); -> matches "title" from above.
-return shouldAllowClick ? Button() : Container();
+print('Is button enabled? ' + isButtonEnabled);
+```
 
+Or use `bool` to show Widget with combination of `FutureBuilder`
+
+```
+return FutureBuilder<bool>(
+  future: DevMenuHelper()
+    .getSharedPreferenceBool('Should show recent transactions?'),
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.done &&
+    snapshot.hasData) {
+      bool shouldShowTransactions = snapshot.data;
+      return shouldShowTransactions ? TransactionsWidget() : Container();
+    } else {
+      return Container();
+    }
+  },
+);
 ```
 
 `testWidgets` is list of widgets provided for Test playground screen of plugin. Usually widgets which are not yet connected with the Apps flow, or work in progress stuff.
